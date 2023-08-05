@@ -1,6 +1,3 @@
-# from datetime import datetime
-
-# from sqlalchemy.orm import joinedload, subqueryload
 from sqlalchemy import and_, func, desc
 
 from src.db_connection_ import session

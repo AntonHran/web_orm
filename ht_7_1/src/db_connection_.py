@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 config_path = Path(__file__).parent.parent.joinpath('config_7_1.ini')
-# print(config_path)
+
 parser = ConfigParser()
 parser.read(config_path)
 

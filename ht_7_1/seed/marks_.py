@@ -15,7 +15,26 @@ def get_dates(start: date, end: date) -> list[date]:
     return result
 
 
-def create_grades(dates_list: list[date], subj_num: int, st_num: int) -> list[list[int]]:
+def create_marks_(start_date: date, finish_date: date):
+    students = session.query(Student).all()
+    subjects = session.query(Subject).all()
+    dates = get_dates(start_date, finish_date)
+    for date_ in dates:
+        subjects_per_date: list[int] = [randint(1, len(list(subjects))) for _ in range(randint(2, 5))]
+        for subject in subjects_per_date:
+            students_per_subject: list = [randint(1, len(list(students))) for _ in range(randint(2, 6))]
+            for student in students_per_subject:
+                mark = Mark(grade=randint(1, 100),
+                            lesson_date=date_,
+                            student_id=student,
+                            subject_id=subject)
+                session.add(mark)
+            session.commit()
+    session.close()
+
+
+# OLD VERSION
+'''def create_grades(dates_list: list[date], subj_num: int, st_num: int) -> list[list[int]]:
     grades: list = []
     for day in dates_list:
         subject_per_day: int = randint(1, subj_num)
@@ -37,22 +56,4 @@ def create_marks_old(start_date: date, finish_date: date):
                     subject_id=grade[3])
         session.add(mark)
         session.commit()
-    session.close()
-
-
-def create_marks_(start_date: date, finish_date: date):
-    students = session.query(Student).all()
-    subjects = session.query(Subject).all()
-    dates = get_dates(start_date, finish_date)
-    for date_ in dates:
-        subjects_per_date: list[int] = [randint(1, len(list(subjects))) for _ in range(randint(2, 5))]
-        for subject in subjects_per_date:
-            students_per_subject: list = [randint(1, len(list(students))) for _ in range(randint(2, 6))]
-            for student in students_per_subject:
-                mark = Mark(grade=randint(1, 100),
-                            lesson_date=date_,
-                            student_id=student,
-                            subject_id=subject)
-                session.add(mark)
-            session.commit()
-    session.close()
+    session.close()'''
