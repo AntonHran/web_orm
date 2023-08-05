@@ -1,0 +1,15 @@
+/main.py
+/.idea
+/alembic.ini
+/config.ini
+/core.py
+/db_connection.py
+/ht_2.py
+/ht_2_models.py
+/seed_to_ht_1
+/migrations
+/to_ht_1
+/repository.py
+/session.py
+/session_async.py
+/sign_up.py
